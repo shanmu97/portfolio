@@ -18,7 +18,6 @@ const Intro = () => {
         end: "bottom 20%",
         toggleActions: "play play play play",
         scrub: false,
-        markers: false, // Set true to debug scroll trigger positions
       },
     });
 
@@ -95,6 +94,7 @@ return (
     className="object-cover min-h-screen w-full -mt-28"
   />
 </div>
+
 
   </div>
 );

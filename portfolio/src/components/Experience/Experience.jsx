@@ -55,7 +55,6 @@ export default function Experience({ introRef }) {
         start: "60% top",
         end: "bottom top",
         scrub: true,
-        markers: true,
         onUpdate: (self) => {
           if (self.progress === 1 && !experienceDone) {
             setExperienceDone(true);
