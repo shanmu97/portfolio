@@ -188,7 +188,7 @@ export default function Experience({ introRef }) {
         </div>
       </div>
       {/* Spacer or other content below to create scroll space */}
-      <div className="h-[680px]" /> {/* adjust height as needed */}
+      <div className="h-[665px]" /> {/* adjust height as needed */}
     </div>
   );
 }
