@@ -17,7 +17,6 @@ export default function Experience({ introRef }) {
   const [scrollY, setScrollY] = useState(0);
   const [experienceDone, setExperienceDone] = useState(false);
   const [currentBubbleIndex, setCurrentBubbleIndex] = useState(-1);
-  const [showBubbleCard, setShowBubbleCard] = useState(false);
 
   const bubbleItems = [
     {
@@ -122,7 +121,6 @@ export default function Experience({ introRef }) {
         start: "top 80%",
         end: "bottom 20%",
         scrub: true,
-        markers: true,
         onUpdate: (self) => {
           updateStickman(self.progress);
         },

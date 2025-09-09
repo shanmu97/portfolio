@@ -10,36 +10,41 @@ const Intro = () => {
   const developerRef = useRef(null);
   const imageRef = useRef(null);
 
-useEffect(() => {
-  // Initial entrance animation on page load
-  gsap.fromTo(
-    [imageRef.current, fullstackRef.current, developerRef.current],
-    { y: 50, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", stagger: 0.3 }
-  );
+  useEffect(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: fullstackRef.current.parentElement,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play play play play",
+        scrub: false,
+        markers: false, // Set true to debug scroll trigger positions
+      },
+    });
 
-  // Scroll-triggered animation sliding elements out upward when scrolling up past trigger
-  const scrollTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: fullstackRef.current.parentElement,
-      start: "top 80%",
-      end: "bottom 20%",
-      toggleActions: "play reverse play reverse",
-      scrub: false,
-      markers: false,
-    },
-  });
+    tl.fromTo(
+      imageRef.current,
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
+    )
+      .fromTo(
+        fullstackRef.current,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+        "-=0.5"
+      )
+      .fromTo(
+        developerRef.current,
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
+        "-=0.5"
+      );
 
-  scrollTl.to(
-    [imageRef.current, fullstackRef.current, developerRef.current],
-    { y: -100, opacity: 0, duration: 0.8, ease: "power3.in", stagger: 0.3 }
-  );
-
-  return () => {
-    if (scrollTl.scrollTrigger) scrollTl.scrollTrigger.kill();
-    scrollTl.kill();
-  };
-}, []);
+    return () => {
+      if (tl.scrollTrigger) tl.scrollTrigger.kill();
+      tl.kill();
+    };
+  }, []);
 
   return (
     <div className="flex justify-center items-center gap-12 min-h-screen bg-black">
