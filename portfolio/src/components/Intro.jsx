@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import shanmu from '../assets/shanmu.jpg';
+import shanmu from '../assets/shanmu.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,47 +46,59 @@ const Intro = () => {
     };
   }, []);
 
-  return (
-    <div className="flex justify-center items-center gap-12 min-h-screen bg-black">
-      <div className="flex flex-col items-end justify-center">
-        <h1
-          ref={fullstackRef}
-          className="text-9xl font-bold text-white"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
-            maskImage:
-              "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
-          }}
-        >
-          FULL STACK
-        </h1>
-        <h1
-          ref={developerRef}
-          className="text-9xl font-bold text-white"
-          style={{
-            WebkitMaskImage:
-              "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
-            maskImage:
-              "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
-          }}
-        >
-          DEVELOPER
-        </h1>
-      </div>
-      <div
-        ref={imageRef}
+return (
+  <div className="flex min-h-screen bg-black items-end">
+    {/* Left half: Text block */}
+    <div className="w-1/2 flex flex-col justify-center items-end pr-">
+      <h1
+        ref={fullstackRef}
+        className="text-9xl font-bold text-white leading-tight"
         style={{
           WebkitMaskImage:
-            "linear-gradient(to bottom, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%)",
+            "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
           maskImage:
-            "linear-gradient(to bottom, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 100%)",
+            "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
         }}
       >
-        <img src={shanmu} alt="Shanmukha" />
-      </div>
+        FULL STACK
+      </h1>
+      <h1
+        ref={developerRef}
+        className="text-9xl font-bold text-white leading-tight mb-16"
+        style={{
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
+          maskImage:
+            "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
+        }}
+      >
+        DEVELOPER
+      </h1>
     </div>
-  );
+
+    {/* Right half: Image block */}
+    <div
+    className="object-contain max-h-[100vh] w-1/2"
+  ref={imageRef}
+  style={{
+    WebkitMaskImage:
+      "linear-gradient(to bottom, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%)",
+    maskImage:
+      "linear-gradient(to bottom, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%)",
+  }
+
+  }
+>
+  <img
+    src={shanmu}
+    alt="Shanmukha"
+    className="object-cover min-h-screen w-full -mt-28"
+  />
+</div>
+
+  </div>
+);
+
 };
 
 export default Intro;
