@@ -1,104 +1,88 @@
-import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 import shanmu from '../assets/shanmu.png';
 
-gsap.registerPlugin(ScrollTrigger);
-
 const Intro = () => {
-  const fullstackRef = useRef(null);
-  const developerRef = useRef(null);
-  const imageRef = useRef(null);
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-20% 0px -20% 0px" });
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: fullstackRef.current.parentElement,
-        start: "top 80%",
-        end: "bottom 20%",
-        toggleActions: "play play play play",
-        scrub: false,
-      },
-    });
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [isInView, controls]);
 
-    tl.fromTo(
-      imageRef.current,
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
-    )
-      .fromTo(
-        fullstackRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        "-=0.5"
-      )
-      .fromTo(
-        developerRef.current,
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-        "-=0.5"
-      );
+  const variants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (customDelay) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut", delay: customDelay },
+    }),
+  };
 
-    return () => {
-      if (tl.scrollTrigger) tl.scrollTrigger.kill();
-      tl.kill();
-    };
-  }, []);
+  return (
+    <div className="flex min-h-screen bg-black items-end" ref={ref}>
+      {/* Left half: Text block */}
+      <div className="w-1/2 flex flex-col justify-center items-end mb-24">
+        <motion.h1
+          className="text-9xl font-bold text-white leading-tight -mb-1"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
+            maskImage:
+              "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
+          }}
+          initial="hidden"
+          animate={controls}
+          variants={variants}
+          custom={0.3} // delay for FULL STACK
+        >
+          FULL STACK
+        </motion.h1>
+        <motion.h1
+          className="text-9xl font-bold text-white leading-tight -mt-4"
+          style={{
+            WebkitMaskImage:
+              "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
+            maskImage:
+              "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
+          }}
+          initial="hidden"
+          animate={controls}
+          variants={variants}
+          custom={0.6} // delay for DEVELOPER
+        >
+          DEVELOPER
+        </motion.h1>
+      </div>
 
-return (
-  <div className="flex min-h-screen bg-black items-end">
-    {/* Left half: Text block */}
-    <div className="w-1/2 flex flex-col justify-center items-end pr-">
-      <h1
-        ref={fullstackRef}
-        className="text-9xl font-bold text-white leading-tight"
+      {/* Right half: Image block */}
+      <motion.div
+        className="object-contain max-h-[100vh] w-1/2"
+        initial="hidden"
+        animate={controls}
+        variants={variants}
+        custom={0} // delay for photo first
         style={{
           WebkitMaskImage:
-            "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
+            "linear-gradient(to bottom, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%)",
           maskImage:
-            "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
+            "linear-gradient(to bottom, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%)",
         }}
       >
-        FULL STACK
-      </h1>
-      <h1
-        ref={developerRef}
-        className="text-9xl font-bold text-white leading-tight mb-16"
-        style={{
-          WebkitMaskImage:
-            "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
-          maskImage:
-            "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
-        }}
-      >
-        DEVELOPER
-      </h1>
+        <img
+          src={shanmu}
+          alt="Shanmukha"
+          className="object-cover min-h-screen w-full -mt-28"
+        />
+      </motion.div>
     </div>
-
-    {/* Right half: Image block */}
-    <div
-    className="object-contain max-h-[100vh] w-1/2"
-  ref={imageRef}
-  style={{
-    WebkitMaskImage:
-      "linear-gradient(to bottom, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%)",
-    maskImage:
-      "linear-gradient(to bottom, rgba(255,255,255,1) 90%, rgba(255,255,255,0) 100%)",
-  }
-
-  }
->
-  <img
-    src={shanmu}
-    alt="Shanmukha"
-    className="object-cover min-h-screen w-full -mt-28"
-  />
-</div>
-
-
-  </div>
-);
-
+  );
 };
 
 export default Intro;

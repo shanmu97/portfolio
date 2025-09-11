@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Experience({ introRef }) {
   const expRef = useRef();
-  const cursorRef = useRef();
   const lineRef = useRef();
   const fillRef = useRef();
   const stickmanRef = useRef();
@@ -142,7 +141,7 @@ export default function Experience({ introRef }) {
   return (
     <div
       ref={expRef}
-      className="min-h-screen flex flex-col items-center pt-20 relative "
+      className="min-h-screen flex flex-col items-center pt-20 relative"
     >
       {/* Sticky Container for heading + line */}
       <div className="sticky top-20 z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
@@ -157,15 +156,24 @@ export default function Experience({ introRef }) {
         <div className="w-full relative mt-8">
           <div
             ref={lineRef}
-            className="h-1 w-[96%] relative overflow-visible border border-white rounded"
+            className="h-1 w-[96%] relative overflow-visible border border-white rounded mb-40"
           >
             <div
               ref={fillRef}
               className="absolute top-0 left-0 h-full bg-white w-0 rounded"
             />
             {/* Milestone Circles */}
+            {/* Milestone Circles with "from" labels below */}
             <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-black" />
+            <div className="absolute top-full left-1/4 mt-2 text-white text-xs font-semibold select-none -translate-x-1/2">
+              {bubbleItems[0].from}
+            </div>
+
             <div className="absolute top-1/2 left-3/5 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-black" />
+            <div className="absolute top-full left-3/5 mt-2 text-white text-xs font-semibold select-none -translate-x-1/2">
+              {bubbleItems[1].from}
+            </div>
+
             {/* Arrow Head */}
             <div className="absolute top-1/2 right-0 -translate-y-1/2 w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] border-l-white" />
             {/* Stickman and Bubble */}
@@ -187,7 +195,7 @@ export default function Experience({ introRef }) {
         </div>
       </div>
       {/* Spacer or other content below to create scroll space */}
-      <div className="h-[665px]" /> {/* adjust height as needed */}
+      <div className="h-[550px]" /> {/* adjust height as needed */}
     </div>
   );
 }
