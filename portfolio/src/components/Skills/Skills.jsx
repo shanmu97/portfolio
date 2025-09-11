@@ -43,7 +43,7 @@ function Skills() {
     <div className="text-white py-20 px-4" ref={containerRef}>
       <div className="relative">
   <div
-    className="sticky top-0 bg-black z-10"
+    className="sticky top-0 z-10"
     style={{ height: '95vh' }}
   >
     {/* This sticks the animation content for one viewport height */}

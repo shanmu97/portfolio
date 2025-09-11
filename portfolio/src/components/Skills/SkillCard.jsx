@@ -20,21 +20,21 @@ const SkillCard = ({ skill, index, scrollYProgress }) => {
   return (
     <motion.div
       style={{ x, y, opacity }}
-      className="group flex flex-col items-center bg-gray-200 p-4 rounded-lg my-1 cursor-pointer"
-      whileHover={{ scale: 1.05 }}
+      className="group flex flex-col items-center p-1 rounded-lg my-1 cursor-pointer"
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
     >
-      <img
+      <motion.img
         src={skill.image}
         alt={skill.name}
-        className="w-14 h-14 object-contain"
+        className="w-24 h-20 object-contain text-white p-4 rounded-lg"
+        whileHover={{ scale: 1.05 }}
       />
 
       {/* Container for the name with height toggle */}
       <div
         className="overflow-hidden max-h-0 group-hover:max-h-20 transition-[max-height] duration-300 ease-in-out"
       >
-        <p className="text-sm text-center mt-2 text-black font-semibold">{skill.name}</p>
+        <p className="text-sm text-center mt-2 font-semibold text-white">{skill.name}</p>
       </div>
     </motion.div>
   );

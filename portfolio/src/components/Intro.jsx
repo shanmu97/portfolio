@@ -26,7 +26,7 @@ const Intro = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-black items-end" ref={ref}>
+    <div className="flex min-h-screen items-end" ref={ref}>
       {/* Left half: Text block */}
       <div className="w-1/2 flex flex-col justify-center items-end mb-24">
         <motion.h1
