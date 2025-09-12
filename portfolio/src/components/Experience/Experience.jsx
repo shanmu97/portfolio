@@ -21,6 +21,7 @@ export default function Experience({ introRef }) {
     {
       image1: lumiq,
       companyName: "Lumiq",
+      title:"Software Developer Intern",
       from: "Jan 2025",
       to: "Jun 2025",
       points: {
@@ -32,6 +33,7 @@ export default function Experience({ introRef }) {
     },
     {
       companyName: "Freelancing",
+      title:"FreeLancing",
       from: "Jul 2025",
       to: "Present",
       points: {
@@ -165,13 +167,15 @@ export default function Experience({ introRef }) {
             {/* Milestone Circles */}
             {/* Milestone Circles with "from" labels below */}
             <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-black" />
-            <div className="absolute top-full left-1/4 mt-2 text-white text-xs font-semibold select-none -translate-x-1/2">
-              {bubbleItems[0].from}
+            <div className="flex flex-col items-center justify-center absolute top-full left-1/4 mt-2 text-white text-xs font-semibold select-none -translate-x-1/2">
+              <p>{bubbleItems[0].title}</p>
+              <p>{bubbleItems[0].from}</p>
             </div>
 
             <div className="absolute top-1/2 left-3/5 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-black" />
-            <div className="absolute top-full left-3/5 mt-2 text-white text-xs font-semibold select-none -translate-x-1/2">
-              {bubbleItems[1].from}
+            <div className=" flex flex-col items-center justify-center absolute top-full left-3/5 mt-2 text-white text-xs font-semibold select-none -translate-x-1/2">
+              <p>{bubbleItems[1].title}</p>
+              <p>{bubbleItems[1].from}</p>
             </div>
 
             {/* Arrow Head */}
@@ -195,7 +199,7 @@ export default function Experience({ introRef }) {
         </div>
       </div>
       {/* Spacer or other content below to create scroll space */}
-      <div className="h-[550px]" /> {/* adjust height as needed */}
+      <div className="h-[400px]" /> {/* adjust height as needed */}
     </div>
   );
 }

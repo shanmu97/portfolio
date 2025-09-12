@@ -3,6 +3,7 @@ import Experience from "./components/Experience/Experience";
 import Intro from "./components/Intro";
 import Skills from "./components/Skills/Skills";
 import "./index.css";
+import Education from "./components/Education/Education"
 
 function App() {
   const introRef = useRef();
@@ -14,6 +15,7 @@ function App() {
       </div>
       <Experience introRef={introRef} />
       <Skills />
+      <Education/>
     </div>
   );
 }
