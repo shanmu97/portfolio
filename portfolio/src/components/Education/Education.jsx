@@ -1,24 +1,28 @@
-import { useRef, useState, useEffect } from "react";
-import { useMotionValue, useTransform, motion, useScroll } from "framer-motion";
+import React, { useRef, useEffect, useState } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
+import EducationCard from './EducationCard';
 import montessori from "../../assets/montessori.jpg";
 import narayana from "../../assets/narayana.jpg";
 import vitap from "../../assets/vitap.jpg";
-import EducationCard from "./EducationCard";
-
 import montessorilogo from "../../assets/montessorilogo.jpg";
-import narayanalogo from "../../assets/narayanalogo.jpg";
-import vitaplogo from "../../assets/vitaplogo.jpg";
+import narayanalogo from '../../assets/narayanalogo.jpg';
+import vitaplogo from '../../assets/vitaplogo.jpg';
 
-function Education() {
-  const cardsContainerRef = useRef(null);
+const EducationSection = () => {
+  const titleRef = useRef(null);
+const isTitleInView = useInView(titleRef, { amount: 0.3 });
+
+  const titleControls = useAnimation();
+  const cardsControls = useAnimation();
+
+  // State to track which card is hovered
   const [hoveredCard, setHoveredCard] = useState(null);
 
   const cards = [
     { id: 1, img: montessori, finalX: "-20vw" },
-    { id: 2, img: narayana, finalX: "20vw" },
-    { id: 3, img: vitap, finalX: "0vw" },
+    { id: 2, img: vitap, finalX: "20vw" },
+    { id: 3, img: narayana, finalX: "0vw" },
   ];
-
   const details = [
     {
       logo: montessorilogo,
@@ -28,15 +32,7 @@ function Education() {
       class: "Secondary",
       gpa: "10",
     },
-    {
-      logo: narayanalogo,
-      name: "Narayana Junior College",
-      year: "2020 - 2021",
-      location: "Ongole, Andhra Pradesh",
-      class: "Intermediate",
-      percentage: "97.1",
-    },
-    {
+        {
       logo: vitaplogo,
       name: "VIT-AP University",
       year: "2021 - 2025",
@@ -45,105 +41,89 @@ function Education() {
       major: "Computer Science and Engineering",
       gpa: "8.9",
     },
+    {
+      logo: narayanalogo,
+      name: "Narayana Junior College",
+      year: "2020 - 2021",
+      location: "Ongole, Andhra Pradesh",
+      class: "Intermediate",
+      percentage: "97.1",
+    },
+
   ];
 
   useEffect(() => {
-    const handleScroll = () => scrollY.set(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  const [animationEndScrollY, setAnimationEndScrollY] = useState(0);
-
-  useEffect(() => {
-    const container = cardsContainerRef.current;
-    if (container) {
-      const containerBottom = container.offsetTop + container.offsetHeight;
-      // Start fading out 100px after the animation ends
-      setAnimationEndScrollY(containerBottom + 100);
+    if (isTitleInView) {
+      titleControls.start({
+        y: 0,
+        opacity: 1,
+        transition: { duration: 0.8, ease: 'easeOut' },
+      }).then(() => {
+        cardsControls.start({
+          y: 0,
+          opacity: 1,
+          transition: { duration: 0.8, ease: 'easeOut' },
+        }).then(() => {
+          cardsControls.start((i) => ({
+            x: i === 0 ? '-150%' : i === 1 ? '0%' : '150%',
+            transition: { duration: 0.6, ease: 'easeInOut' },
+          }));
+        });
+      });
+    } else {
+      cardsControls.start({
+        x: 0,
+        y: 300,
+        opacity: 0,
+        transition: { duration: 0.6, ease: 'easeInOut' },
+      });
+      titleControls.start({
+        y: 100,
+        opacity: 0,
+        transition: { duration: 0.6, ease: 'easeInOut' },
+      });
     }
-  }, []);
+  }, [isTitleInView, titleControls, cardsControls]);
 
-  // Use different ref for cards container to separate scroll from header
-
-  // Scroll progress based on cards container to control animations under header
-  const { scrollYProgress } = useScroll({
-    target: cardsContainerRef,
-    offset: ["start start", "end end"],
+  const getInitialCardStyle = () => ({
+    left: '35%',
+    transform: 'translateX(-50%)',
+    top: 0,
   });
 
-  // Control header opacity (fade out after cards finish animating)
+  return (
+    <div className="min-h-screen flex flex-col items-center justify-center px-4">
+      <motion.h2
+        ref={titleRef}
+        initial={{ y: 100, opacity: 0 }}
+        animate={titleControls}
+        className="text-6xl font-bold mb-48 text-white"
+      >
+        Education
+      </motion.h2>
 
-  const transforms = cards.map((card, i) => {
-    const opacity = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
-    const startX = 0.6 + i * 0.1;
-    const endX = startX + 0.3;
-    const x = useTransform(
-      scrollYProgress,
-      [startX, endX],
-      ["0vw", card.finalX]
-    );
-    return { x, opacity };
-  });
-  
-
-return (
-  <div className="min-h-screen flex flex-col items-center relative mt-48">
-    {/* 🔵 TOP MARKER */}
-
-    {/* Sticky header that stays visible on top */}
-    <motion.h2
-      className="sticky top-20 bg-black text-6xl font-bold text-white text-center"
-      initial={{ y: 50, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-    >
-      Education
-    </motion.h2>
-
-    {/* Cards container with height constrained below header */}
-    <div
-      ref={cardsContainerRef}
-      className="relative w-full h-[125vh] flex justify-center items-center overflow-hidden pt-60"
-    >
-      {cards.map(({ id, img }, i) => {
-        const isHovered = hoveredCard === id;
-        return (
+      <div className="relative w-full max-w-4xl h-64">
+        {cards.map(({ id, img }, i) => (
           <motion.div
-            key={id}
-            className={`absolute flex items-center justify-center rounded-lg shadow-lg ${
-              isHovered ? "w-[500px] h-72 z-50" : "w-72 h-60 z-10"
-            }`}
-            style={{
-              x: transforms[i].x,
-              opacity: transforms[i].opacity,
-            }}
-            initial={{ y: 100, opacity: 0 }}
-            animate={{
-              y: [0, -5, 0, 5, 0],
-              rotateY: isHovered ? 180 : 0,
-            }}
-            transition={{
-              y: {
-                repeat: Infinity,
-                repeatType: "loop",
-                duration: 4,
-                ease: "easeInOut",
-              },
-              rotateY: { duration: 0.6, ease: "easeInOut" },
-            }}
-            onHoverStart={() => setHoveredCard(id)}
-            onHoverEnd={() => setHoveredCard(null)}
-          >
-            <EducationCard img={img} flipped={isHovered} info={details[i]} />
-          </motion.div>
-        );
-      })}
+  key={id}
+  custom={i}
+  initial={{ y: 300, opacity: 0, x: 0 }}
+  animate={cardsControls}
+  className="absolute w-64 h-40 bg-white shadow-lg rounded-lg flex items-center justify-center"
+  style={{
+    ...getInitialCardStyle(),
+    zIndex: hoveredCard === id ? 50 : 10, // control zIndex here at wrapper level
+  }}
+  onMouseEnter={() => setHoveredCard(id)}
+  onMouseLeave={() => setHoveredCard(null)}
+>
+  <EducationCard img={img} info={details[i]} isFlipped={hoveredCard === id} />
+</motion.div>
+
+        ))}
+      </div>
     </div>
+  );
+};
 
-    {/* 🔴 BOTTOM MARKER */}
-  </div>
-);
-
-}
-
-export default Education;
+export default EducationSection;

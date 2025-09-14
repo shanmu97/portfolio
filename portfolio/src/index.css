@@ -12,3 +12,78 @@
 .oscillate {
   animation: upDownOscillate 3s ease-in-out infinite;
 }
+
+/* Simulated iPhone Frame */
+.iphone-frame {
+  width: 390px; /* iPhone 14 width */
+  height: 844px; /* iPhone 14 height */
+  border: 16px solid #222;
+  border-radius: 50px;
+  position: relative;
+  margin: 20px auto;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+/* iPhone notch */
+.notch {
+  width: 210px;
+  height: 30px;
+  background-color: #222;
+  border-radius: 0 0 20px 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Contact Page Inside iPhone */
+.contact-container {
+  padding: 60px 20px 20px 20px; /* padding-top for notch */
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+.contact-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.contact-form button {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #0051c7;
+}

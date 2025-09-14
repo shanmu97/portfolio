@@ -1,114 +1,107 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-function EducationCard({ img, flipped, info }) {
-
+function EducationCard({ img, isFlipped, info }) {
   return (
-    <motion.div
-      className="relative w-[850px] h-72"
+    <div
+      className="relative w-[600px] h-72 bg-black" // black background for entire card
       style={{
         perspective: 1000,
-        transformStyle: "preserve-3d",
+        backgroundColor: "black", // fallback
+        zIndex: isFlipped ? 20 : 10,
       }}
-      animate={{ rotateY: flipped ? 180 : 0,
-        scale: flipped ? 1.2 : 1,
-       }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
     >
-      {/* Front Side */}
       <motion.div
-  className="absolute w-full h-full rounded-md border border-black shadow-lg overflow-hidden"
-  style={{
-    backfaceVisibility: "hidden",
-    WebkitBackfaceVisibility: "hidden",
-    position: "absolute",
-    top: 0,
-    left: 0,
-    zIndex: 2,
-  }}
->
-  <img
-    src={img}
-    alt="education front"
-    className="w-full h-full object-cover rounded-md brightness-75"
-  />
-
-  {/* Overlay Text at Bottom */}
-  <div className="absolute bottom-4 w-full text-center">
-    <p className="text-white text-xl font-semibold px-4 py-1 inline-block rounded-md mx-auto">
-      {info.class}
-    </p>
-  </div>
-</motion.div>
-
-
-      {/* Back Side */}
-      <motion.div
-        className="absolute w-full h-full rounded-md border border-black bg-white shadow-lg flex items-center justify-center"
+        className="w-full h-full relative"
         style={{
-          transform: "rotateY(180deg)",
-          backfaceVisibility: "hidden",
-          WebkitBackfaceVisibility: "hidden",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          padding: "1rem",
-          boxSizing: "border-box",
+          transformStyle: "preserve-3d",
+          transformOrigin: "center",
+          backgroundColor: "transparent",
         }}
+        animate={{
+          rotateY: isFlipped ? 180 : 0,
+           scale: isFlipped ? 1.1 : 1,
+
+        }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
       >
-        {flipped && <div
-          className="w-full h-full p-6 text-black rounded-md flex flex-col justify-between"
-          style={{ transform: "rotateY(180deg)" }}
+        {/* Front Side */}
+        <div
+          className="absolute w-full h-full left-1/2 transform -translate-x-1/2 rounded-md border border-black shadow-lg overflow-hidden bg-black"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+          }}
         >
-          {/* Top: Logo & Institution Name */}
-          <div className="flex flex-col items-center gap-2">
-            {info.logo && (
-              <img
-                src={info.logo}
-                alt="school logo"
-                className="w-20 h-20 object-cover shadow-md"
-                   style={{ boxShadow: "6px 6px rgba(128, 128, 128, 0.4)" }} 
-              />
-            )}
-            <h3 className="text-2xl font-semibold text-gray-800 my-2">
-              {info.name}
-            </h3>
+          <img
+            src={img}
+            alt="education front"
+            className="w-full h-full object-cover rounded-md brightness-75"
+          />
+
+          <div className="absolute bottom-4 w-full text-center">
+            <p className="text-white text-xl font-semibold px-4 py-1 inline-block rounded-md mx-auto">
+              {info.class}
+            </p>
           </div>
+        </div>
 
-          {/* Info Grid: 2 Columns Per Row */}
-          <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm text-gray-700">
-            <div>
-              <span className="font-semibold">Year:</span> {info.year}
+        {/* Back Side */}
+        <div
+          className="absolute w-[500px] h-full left-1/2 transform -translate-x-1/2 rotate-y-180 rounded-md border border-black shadow-lg flex items-center justify-center p-6 text-black bg-white"
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            transform: "rotateY(180deg)",
+          }}
+        >
+          <div className="w-full h-full flex flex-col justify-between text-gray-900">
+            {/* Top Section */}
+            <div className="flex flex-col items-center gap-2">
+              {info.logo && (
+                <img
+                  src={info.logo}
+                  alt="school logo"
+                  className="w-20 h-20 object-cover shadow-md"
+                  style={{ boxShadow: "6px 6px rgba(128, 128, 128, 0.4)" }}
+                />
+              )}
+              <h3 className="text-2xl font-semibold my-2">
+                {info.name}
+              </h3>
             </div>
-            <div>
-              <span className="font-semibold">Course:</span> {info.class}
+
+            {/* Info Grid */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm mt-4">
+              <div>
+                <span className="font-semibold">Year:</span> {info.year}
+              </div>
+              <div>
+                <span className="font-semibold">Course:</span> {info.class}
+              </div>
+              <div>
+                <span className="font-semibold">Location:</span> {info.location}
+              </div>
+              {info.major && (
+                <div>
+                  <span className="font-semibold">Major:</span> {info.major}
+                </div>
+              )}
+              {info.gpa && (
+                <div>
+                  <span className="font-semibold">GPA:</span> {info.gpa}
+                </div>
+              )}
+              {info.percentage && (
+                <div>
+                  <span className="font-semibold">Percentage:</span> {info.percentage}
+                </div>
+              )}
             </div>
-
-            <div>
-              <span className="font-semibold">Location:</span> {info.location}
-            </div>
-            {info.major && (
-              <div>
-                <span className="font-semibold">Major:</span> {info.major}
-              </div>
-            )}
-
-            {info.gpa && (
-              <div>
-                <span className="font-semibold">GPA:</span> {info.gpa}
-              </div>
-            )}
-
-            {info.percentage && (
-              <div>
-                <span className="font-semibold">Percentage:</span>{" "}
-                {info.percentage}
-              </div>
-            )}
           </div>
-        </div>}
+        </div>
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 

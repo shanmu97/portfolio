@@ -38,7 +38,7 @@ function Skills() {
   });
 
   return (
-    <div className="text-white py-20 px-4" ref={containerRef}>
+    <div className="text-white px-4" ref={containerRef}>
       <div className="relative">
   <div
     className="sticky top-0 z-10"
