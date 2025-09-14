@@ -23,9 +23,10 @@ function Mobile() {
           className="px-4 pt-16 pb-6 overflow-y-auto h-full font-sans text-sm text-white"
           onSubmit={(e) => {
   e.preventDefault();
-  const mailtoLink = `mailto:shanmukhareddyvasa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}%0D%0A%0D%0A`;
-  window.location.href = mailtoLink;
+  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=shanmukhareddyvasa@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+  window.open(gmailLink, "_blank");
 }}
+
 
 
         >
