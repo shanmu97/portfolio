@@ -82,16 +82,16 @@ const Intro = () => {
           variants={variants}
           custom={1.2} // delay after headings
         >
-          <p className="text-center">
+          <span className="text-center">
             Full-stack web developer with a focus on React and Node.js. I build
             clean, scalable apps with a user-first approach. Open to remote
             projects and collaborations.
-          </p>
-          <p className="block text=center font-semibold">
+          </span>
+          <span className="block text=center font-semibold">
             Always learning, Always building.
-          </p>
+          </span>
         </motion.p>
-        <motion.p
+        <motion.div
           className="mt-4 text-white text-md max-w-xs text-center italic"
           initial="hidden"
           animate={controls}
@@ -99,7 +99,7 @@ const Intro = () => {
           custom={1.5}
         >
           <Socials />
-        </motion.p>
+        </motion.div>
       </div>
 
       {/* Right half: Image block */}
