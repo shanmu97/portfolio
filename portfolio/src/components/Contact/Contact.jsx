@@ -12,6 +12,7 @@ import {
 } from 'react-icons/fa';
 import Mobile from './Mobile';
 import sanji from '../../assets/luffy.png';
+import resume from '../../assets/ShanmukhaReddy_SoftwareDeveloper.pdf'
 
 function Contact() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,13 +24,23 @@ function Contact() {
   const isInView = useInView(containerRef, { amount: 0.3, once: false });
 
   const textVariants = {
-    hidden: { x: '-100vw', opacity: 0 },
+    hidden: { x: -100, opacity: 0 },
     visible: { x: 0, opacity: 1, transition: { type: 'spring', stiffness: 50, damping: 20 } },
   };
 
   const imageVariants = {
-    hidden: { x: '100vw', opacity: 0 },
-    visible: { x: 0, opacity: 1,scale:1.69, transition: { type: 'spring', stiffness: 50, damping: 20 } },
+hidden: { x: 100, opacity: 0, scale: 1 },
+visible: {
+  x: 0,
+  opacity: 1,
+  scale: 1.69,
+  transition: {
+    type: 'spring',
+    stiffness: 50,
+    damping: 20
+  }
+}
+
   };
 
   return (
@@ -79,9 +90,15 @@ function Contact() {
                 <FaEnvelope />
               </button>
 
-              <a href="https://drive.google.com/your-resume-link" target="_blank" rel="noopener noreferrer">
-                <FaDownload className="hover:text-yellow-300 transition-transform duration-300" />
-              </a>
+              <a
+  href={resume}
+  download
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <FaDownload className="hover:text-yellow-300 transition-transform duration-300" />
+</a>
+
             </div>
           </div>
         </motion.div>
@@ -100,6 +117,14 @@ function Contact() {
             className="w-full h-full object-contain"
           />
         </motion.div>
+
+        <p
+  className="absolute text-yellow-400 italic text-lg text-center"
+  style={{ top: '90%', left: '5%' }} // example position, adjust as you like
+>
+  "As long as I live, there are infinite chances"<br/> - Monkey D. Luffy
+</p>
+
 
       </div>
 

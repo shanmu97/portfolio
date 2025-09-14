@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { FaTransgender } from "react-icons/fa";
 
 function Mobile() {
   const [to, setTo] = useState("");
@@ -24,9 +23,10 @@ function Mobile() {
           className="px-4 pt-16 pb-6 overflow-y-auto h-full font-sans text-sm text-white"
           onSubmit={(e) => {
   e.preventDefault();
-  const mailtoLink = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}%0D%0A%0D%0A`;
+  const mailtoLink = `mailto:shanmukhareddyvasa@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}%0D%0A%0D%0A`;
   window.location.href = mailtoLink;
 }}
+
 
         >
           <h1 className="text-2xl font-medium mb-4 text-white0">New Message</h1>
