@@ -46,12 +46,12 @@ function Skills() {
   >
     {/* This sticks the animation content for one viewport height */}
     <motion.h2
-      className="text-5xl text-center mb-24 pt-50"
+      className="text-5xl text-center mb-24 pt-50 cal-sans-regular"
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      Skills
+      Skillset
     </motion.h2>
 
     {/* Row 1 - 8 items */}

@@ -100,7 +100,7 @@ const EducationSection = () => {
         ref={titleRef}
         initial={{ y: 100, opacity: 0 }}
         animate={titleControls}
-        className="text-6xl font-bold mb-52 text-white"
+        className="text-6xl font-bold mb-52 text-white cal-sans-regular"
       >
         Education
       </motion.h2>

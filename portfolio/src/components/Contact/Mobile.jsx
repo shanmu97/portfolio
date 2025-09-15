@@ -22,13 +22,12 @@ function Mobile() {
         <form
           className="px-4 pt-16 pb-6 overflow-y-auto h-full font-sans text-sm text-white"
           onSubmit={(e) => {
-  e.preventDefault();
-  const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=shanmukhareddyvasa@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
-  window.open(gmailLink, "_blank");
-}}
-
-
-
+            e.preventDefault();
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=shanmukhareddyvasa@gmail.com&su=${encodeURIComponent(
+              subject
+            )}&body=${encodeURIComponent(message)}`;
+            window.open(gmailLink, "_blank");
+          }}
         >
           <h1 className="text-2xl font-medium mb-4 text-white0">New Message</h1>
 

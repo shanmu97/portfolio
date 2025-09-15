@@ -40,7 +40,7 @@ function EducationCard({ img, isFlipped, info }) {
           />
 
           <div className="absolute bottom-4 w-full text-center">
-            <p className="text-white text-xl font-semibold px-4 py-1 inline-block rounded-md mx-auto">
+            <p className="text-white text-xl font-semibold px-4 py-1 inline-block rounded-md mx-auto cal-sans-medium">
               {info.class}
             </p>
           </div>
@@ -66,35 +66,35 @@ function EducationCard({ img, isFlipped, info }) {
                   style={{ boxShadow: "6px 6px rgba(128, 128, 128, 0.4)" }}
                 />
               )}
-              <h3 className="text-2xl font-semibold my-2">
+              <h3 className="text-2xl font-semibold my-2 cal-sans-medium">
                 {info.name}
               </h3>
             </div>
 
             {/* Info Grid */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-sm mt-4">
+            <div className="grid grid-cols-2 gap-x-6 gap-y-3 text-xs mt-4 libre-baskerville-regular">
               <div>
-                <span className="font-semibold">Year:</span> {info.year}
+                <span className="font-semibold cal-sans-medium">Year:</span> {info.year}
+              </div>
+              <div >
+                <span className="font-semibold cal-sans-medium">Course:</span> {info.class}
               </div>
               <div>
-                <span className="font-semibold">Course:</span> {info.class}
-              </div>
-              <div>
-                <span className="font-semibold">Location:</span> {info.location}
+                <span className="font-semibold cal-sans-medium">Location:</span> {info.location}
               </div>
               {info.major && (
                 <div>
-                  <span className="font-semibold">Major:</span> {info.major}
+                  <span className="font-semibol cal-sans-mediumd">Major:</span> {info.major}
                 </div>
               )}
               {info.gpa && (
                 <div>
-                  <span className="font-semibold">GPA:</span> {info.gpa}
+                  <span className="font-semibold cal-sans-medium">GPA:</span> {info.gpa}
                 </div>
               )}
               {info.percentage && (
                 <div>
-                  <span className="font-semibold">Percentage:</span> {info.percentage}
+                  <span className="font-semibold cal-sans-medium">Percentage:</span> {info.percentage}
                 </div>
               )}
             </div>

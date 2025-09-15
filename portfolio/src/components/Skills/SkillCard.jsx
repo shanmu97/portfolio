@@ -34,7 +34,7 @@ const SkillCard = ({ skill, index, scrollYProgress }) => {
       <div
         className="overflow-hidden max-h-0 group-hover:max-h-20 transition-[max-height] duration-300 ease-in-out"
       >
-        <p className="text-sm text-center mt-2 font-semibold text-white">{skill.name}</p>
+        <p className="text-sm text-center mt-2 font-semibold text-white libre-baskerville-bold">{skill.name}</p>
       </div>
     </motion.div>
   );

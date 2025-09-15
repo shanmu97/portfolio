@@ -31,7 +31,7 @@ const Intro = () => {
       {/* Left half: Text block */}
       <div className="w-1/2 flex flex-col justify-center items-center mb-12">
         <motion.h1
-          className="text-[7rem] font-bold text-white leading-tight -mb-1"
+          className="text-[7rem] font-bold text-white leading-tight cal-sans-regular -mb-5"
           style={{
             WebkitMaskImage:
               "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
@@ -46,7 +46,7 @@ const Intro = () => {
           SHANMUKHA
         </motion.h1>
         <motion.h1
-          className="text-[7rem] font-bold text-white leading-tight"
+          className="text-[7rem] font-bold text-white leading-tight cal-sans-regular -mb-2"
           style={{
             WebkitMaskImage:
               "linear-gradient(to bottom, rgba(255,255,255,1) 35%, rgba(255,255,255,0) 100%)",
@@ -58,10 +58,11 @@ const Intro = () => {
           variants={variants}
           custom={0.6}
         >
-          REDDY VASA
+          <span className="mr-9">REDDY</span>
+  <span>VASA</span>
         </motion.h1>
         <motion.h1
-          className="text-[3.5rem] font-bold text-white leading-tight mt-0"
+          className="text-[3.5rem] font-bold text-white leading-tight mt-0 cal-sans-regular"
           initial="hidden"
           animate={controls}
           variants={variants}
@@ -76,18 +77,18 @@ const Intro = () => {
           WEB DEVELOPER
         </motion.h1>
         <motion.p
-          className="flex flex-col items-center mt-6 text-white text-lg max-w-[39.5rem] italic"
+          className="flex flex-col items-center mt-6 text-white text-[1.05rem] max-w-[41.5rem] italic "
           initial="hidden"
           animate={controls}
           variants={variants}
           custom={1.2} // delay after headings
         >
-          <span className="text-center">
+          <span className="text-center font-semibold libre-baskerville-regular-italic">
             Full-stack web developer with a focus on React and Node.js. I build
             clean, scalable apps with a user-first approach. Open to remote
             projects and collaborations.
           </span>
-          <span className="block text=center font-semibold">
+          <span className="block text-center  cal-sans-medium mt-1">
             Always learning, Always building.
           </span>
         </motion.p>

@@ -47,7 +47,7 @@ function Contact() {
 
   return (
     <div
-      className="relative h-screen bg-black overflow-hidden mt-64"
+      className="relative h-screen bg-black overflow-hidden mt-64 "
       ref={containerRef}
     >
       <div className={`w-full h-full ${isModalOpen ? "blur-sm" : ""}`}>
@@ -59,15 +59,15 @@ function Contact() {
           animate={isInView ? "visible" : "hidden"}
         >
           <div className="space-y-4 text-white ">
-            <h2 className="text-9xl font-bold">Let’s Connect</h2>
+            <h2 className="text-9xl oleo-script-swash-caps-bold">Let’s Connect</h2>
 
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-300 text-lg oleo-script-swash-caps-regular">
               Here we go, off to the Grand Line! Wanna be my crewmate? Hit me up
               on socials and let’s have fun!
             </p>
 
-            <p className="text-gray-400 flex items-center gap-2">
-              <FaMapMarkerAlt className="text-white" />
+            <p className="text-gray-400 flex items-center gap-2 oleo-script-swash-caps-bold">
+              <FaMapMarkerAlt className="text-white " />
               Hyderabad, India
             </p>
             <Socials/>
@@ -91,7 +91,7 @@ function Contact() {
         </motion.div>
 
         <motion.p
-          className="absolute text-yellow-400 italic text-lg text-center"
+          className="absolute text-yellow-400 italic text-lg text-center oleo-script-swash-caps-regular"
           style={{ top: "90%", left: "5%" }}
           variants={quoteVariants}
           initial="hidden"

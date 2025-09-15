@@ -20,7 +20,7 @@ export default function Experience({ introRef }) {
   const bubbleItems = [
     {
       image1: lumiq,
-      companyName: "Lumiq",
+      companyName: "Lumiq.ai",
       title:"Software Developer Intern",
       from: "Jan 2025",
       to: "Jun 2025",
@@ -149,7 +149,7 @@ export default function Experience({ introRef }) {
       <div className="sticky top-20 z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
         {/* Heading */}
         <div className="relative inline-block mb-96">
-          <h2 className="text-white text-center text-6xl font-bold relative">
+          <h2 className="text-white text-center text-6xl font-bold relative cal-sans-regular">
             Experience
           </h2>
         </div>
@@ -167,13 +167,13 @@ export default function Experience({ introRef }) {
             {/* Milestone Circles */}
             {/* Milestone Circles with "from" labels below */}
             <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-black" />
-            <div className="flex flex-col items-center justify-center absolute top-full left-1/4 mt-2 text-white text-xs font-semibold select-none -translate-x-1/2">
+            <div className="flex flex-col items-center justify-center absolute top-full left-1/4 mt-2 text-white text-[0.9rem] select-none -translate-x-1/2 cal-sans-medium">
               <p>{bubbleItems[0].title}</p>
               <p>{bubbleItems[0].from}</p>
             </div>
 
             <div className="absolute top-1/2 left-3/5 -translate-y-1/2 w-4 h-4 bg-white rounded-full border-2 border-black" />
-            <div className=" flex flex-col items-center justify-center absolute top-full left-3/5 mt-2 text-white text-xs font-semibold select-none -translate-x-1/2">
+            <div className=" flex flex-col items-center justify-center absolute top-full left-3/5 mt-2 text-white text-[0.9rem] select-none -translate-x-1/2 cal-sans-medium">
               <p>{bubbleItems[1].title}</p>
               <p>{bubbleItems[1].from}</p>
             </div>
@@ -188,7 +188,7 @@ export default function Experience({ introRef }) {
             >
               {experienceDone && <Stickman scrollY={scrollY} />}
               {experienceDone && currentBubbleIndex !== -1 && (
-                <div className="absolute left-20 bottom-32 transition-opacity duration-300 ease-out opacity-100">
+                <div className="absolute left-20 bottom-32 transition-opacity duration-300 ease-out opacity-100 ">
                   <ComicSpeechBubble
                     bubbleItems={[bubbleItems[currentBubbleIndex]]}
                   />

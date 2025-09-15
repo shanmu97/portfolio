@@ -24,12 +24,12 @@ export default function BubbleCard({ bubbleItems }) {
                   className="w-10 h-10 object-contain"
                 />
               </div>}
-              <span className="text-4xl font-semibold text-center">{item.companyName}</span>
+              <span className="text-4xl font-semibold text-center cal-sans-medium">{item.companyName}</span>
             </div>
 
             {/* Date range placeholder - customize if date props provided */}
             <div>
-              <span className="text-[1rem] font-semibold text-center pl-3">
+              <span className="text-[1rem] font-semibold text-center pl- cal-sans-medium">
                 {/* Example static date, replace or add date field to item */}
                 {item.from} - {item.to}
               </span>
@@ -39,9 +39,9 @@ export default function BubbleCard({ bubbleItems }) {
 
             {/* List of points */}
             <div className="w-[86%] mt-2 overflow-y-auto max-h-[240px]">
-              <ul className=" w-full list-disc list-inside space-y-1 text-justify">
+              <ul className=" w-full list-disc list-inside space-y-1 text-justify libre-baskerville-regular">
                 {Object.values(item.points).map((point, idx) => (
-                  <li key={idx} className="text-sm leading-snug">
+                  <li key={idx} className="text-xs leading-snug">
                     {point}
                   </li>
                 ))}
